@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des chauffeurs{% endblock %}
+
+{% block body %}
+    <h1>Liste des chauffeurs</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Code Chauffeur</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Adresse</th>
+                <th>Contact</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for chauffeur in chauffeurs %}
+            <tr>
+                <td>{{ chauffeur.codeChauffeur }}</td>
+                <td>{{ chauffeur.nomChauffeur }}</td>
+                <td>{{ chauffeur.prenomChauffeur }}</td>
+                <td>{{ chauffeur.adresse }}</td>
+                <td>{{ chauffeur.contact }}</td>
+                <td>
+                    <a href="{{ path('app_chauffeur_show', {'codeChauffeur': chauffeur.codeChauffeur}) }}">Voir</a>
+                    <a href="{{ path('app_chauffeur_edit', {'codeChauffeur': chauffeur.codeChauffeur}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_chauffeur_new') }}">Ajouter un nouveau chauffeur</a>
+{% endblock %}

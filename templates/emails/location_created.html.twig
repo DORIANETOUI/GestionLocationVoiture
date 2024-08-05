@@ -1,0 +1,22 @@
+{# templates/emails/location_created.html.twig #}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Confirmation de votre location</h1>
+    <p>Bonjour {{ client.nomClient }} {{ client.prenomClient }},</p>
+    <p>Votre location a été confirmée avec les détails suivants :</p>
+    <ul>
+        <li><strong>Voiture :</strong> {{ location.voiture.libelleVoiture }}</li>
+        <li><strong>Date de début :</strong> {{ location.dateDebutLocation|date('Y-m-d') }}</li>
+        <li><strong>Date de fin :</strong> {{ location.dateFinLocation|date('Y-m-d') }}</li>
+        <li><strong>Prix :</strong> {{ location.prixLocation }} €</li>
+        <li><strong>Chauffeur :</strong> {{ location.chauffeur.nomChauffeur }} {{ location.chauffeur.prenomChauffeur }}</li>
+    </ul>
+    <p>Merci pour votre confiance.</p>
+    <p>Cordialement,</p>
+    <p>Votre équipe de gestion des locations</p>
+</body>
+</html>

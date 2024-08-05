@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Location{% endblock %}
+
+{% block body %}
+    <h1>Créer une nouvelle Location</h1>
+
+    {% if app.request.hasPreviousSession %}
+        {% for label, messages in app.flashes %}
+            <div class="flash-{{ label }}">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {{ include('location/_form.html.twig') }}
+
+    <a href="{{ path('app_location_index') }}" class="btn-link">Retour à la liste</a>
+{% endblock %}

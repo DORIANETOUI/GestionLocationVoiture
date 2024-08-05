@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>{% block title %}Mon Site{% endblock %}</title>
+   
+    <link rel="icon" href="{{ asset('img/logo4.jpg') }}" type="image/jpg" sizes="128x128"> <!-- Taille spécifiée en 128x128 pixels -->
+
+    {# Inclure Bootstrap de base #}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    {# Inclure le thème Bootswatch #}  
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('CSS/Stylecss.css') }}">
+    {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+    </body>
+</html>

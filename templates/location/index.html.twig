@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des locations{% endblock %}
+
+{% block body %}
+    <h1>Liste des locations</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Code Location</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+                <th>Immatriculation</th> {# Ajout de la colonne Voiture #}
+                <th>Marque</th>
+                <th>Modèle</th>
+                <th>Prix</th>
+                <th>Client</th>
+                <th>Chauffeur</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for location in locations %}
+            <tr>
+                <td>{{ location.codeLocation }}</td>
+                <td>{{ location.dateDebutLocation ? location.dateDebutLocation|date('Y-m-d') : '' }}</td>
+                <td>{{ location.dateFinLocation ? location.dateFinLocation|date('Y-m-d') : '' }}</td>
+                <td>{{ location.voiture ? location.voiture.immatriculation : '' }}</td> {# Affichage de la voiture #}
+                <td>{{ location.voiture ? location.voiture.marque.libelleMarque : '' }}</td> {# Affichage de la voiture #}
+                <td>{{ location.voiture ? location.voiture.modele : '' }}</td> {# Affichage de la voiture #}
+                <td>{{ location.prixLocation }}</td>
+                <td>{{ location.client ? location.client.nomClient : '' }}</td>
+                <td>{{ location.chauffeur ? location.chauffeur.nomChauffeur ~ ' ' ~ location.chauffeur.prenomChauffeur : '' }}</td>
+                <td>
+                    <a href="{{ path('app_location_show', {'codeLocation': location.codeLocation}) }}">Voir</a>
+                    <a href="{{ path('app_location_edit', {'codeLocation': location.codeLocation}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Aucun enregistrement trouvé</td> {# Ajustement du colspan pour correspondre aux colonnes #}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_location_new') }}">Ajouter une nouvelle location</a>
+{% endblock %}

@@ -1,0 +1,103 @@
+body {
+    background-image: url('/img/');
+    background-size: 100% 100%; /* L'image sera redimensionnée pour correspondre à la taille de l'élément */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    line-height: 1.8; /* Ajoute un peu d'espacement entre les lignes pour une meilleure lisibilité */
+}
+
+.container {
+    padding: 20px; /* Ajoute du padding pour éviter que le texte soit collé aux bords */
+    width: 80%; /* Limite la largeur du conteneur pour qu'il ne prenne pas toute la largeur de l'écran */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 3em; /* Double la taille de la police des titres */
+}
+
+p {
+    font-size: 2em; /* Augmente légèrement la taille de la police des paragraphes */
+}
+
+form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre les éléments du formulaire horizontalement */
+    margin: auto;
+    background-color: #6c757d; /* Gris */
+}
+
+form input,
+form textarea,
+form select {
+    width: 100%; /* Prend toute la largeur du formulaire */
+    max-width: 500px; /* Limite la largeur maximale des champs */
+    margin-bottom: 10px; /* Ajoute un espace entre les champs */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #6c757d; /* Gris */
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #5a6268; /* Gris plus foncé */
+}
+
+.btn {
+    background-color: #6c757d; /* Change la couleur de fond du bouton en gris */
+    color: white; /* Change la couleur du texte du bouton */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #5a6268; /* Change la couleur de fond du bouton au survol en gris plus foncé */
+}
+
+.btn-link {
+    background-color: #6c757d; /* Change la couleur de fond du lien en gris */
+    color: white; /* Change la couleur du texte du lien */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none; /* Supprime le soulignement du lien */
+    font-size: 1.2em;
+    display: inline-block; /* Rend le lien comme un bouton */
+    cursor: pointer;
+}
+
+.btn-link:hover {
+    background-color: #5a6268; /* Change la couleur de fond du lien au survol en gris plus foncé */
+}
+.flash-success {
+    background-color: #dff0d8;
+    color: #3c763d;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #d6e9c6;
+    border-radius: 4px;
+}
+
+.flash-error {
+    background-color: #f2dede;
+    color: #a94442;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ebccd1;
+    border-radius: 4px;
+}
