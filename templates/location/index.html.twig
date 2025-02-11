@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des locations{% endblock %}
+
+{% block body %}
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Liste des locations</h1>
+        <a href="{{ path('app_location_pdf') }}" class="btn-link">
+            PDF<span class="glyphicon glyphicon-save"></span>
+        </a>
+    </div>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+                <th>Immatriculation</th> {# Ajout de la colonne Voiture #}
+                <th>Marque</th>
+                <th>Modèle</th>
+                <th>Destination</th>
+                <th>Prix</th>
+                <th>Client</th>
+                <th>Chauffeur</th>
+                <th>Date de retour</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for location in locations %}
+            <tr>
+                <td>{{ location.codeLocation }}</td>
+                <td>{{ location.dateDebutLocation ? location.dateDebutLocation|date('Y-m-d') : '' }}</td>
+                <td>{{ location.dateFinLocation ? location.dateFinLocation|date('Y-m-d') : '' }}</td>
+                <td>{{ location.voiture ? location.voiture.immatriculation : '' }}</td> {# Affichage de la voiture #}
+                <td>{{ location.voiture ? location.voiture.marque.libelleMarque : '' }}</td> {# Affichage de la voiture #}
+                <td>{{ location.voiture ? location.voiture.modele : '' }}</td> {# Affichage de la voiture #}
+                <td>{{ location.destination}}</td>
+                <td>{{ location.prixLocation }}</td>
+                <td>{{ location.client ? location.client.nomClient : '' }}</td>
+                <td>{{ location.chauffeur ? location.chauffeur.nomChauffeur ~ ' ' ~ location.chauffeur.prenomChauffeur : '' }}</td>
+
+            <td>
+                {% if location.rendu %}
+                    {{ location.rendu|date('d/m/Y H:i') }}
+                {% else %}
+                    <a href="{{ path('app_location_update_render_date', {'codeLocation': location.codeLocation}) }}" >Inserer une date</a>
+                {% endif %}
+            </td>
+
+
+                <td>
+                    <a href="{{ path('app_location_show', {'codeLocation': location.codeLocation}) }}">Voir</a>
+                    <a href="{{ path('app_location_edit', {'codeLocation': location.codeLocation}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Aucun enregistrement trouvé</td> {# Ajustement du colspan pour correspondre aux colonnes #}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   <tr >
+    <td >
+        <a href="{{ path('app_location_new') }}" class="btn-link">Ajouter une nouvelle location</a>
+    </td>
+    <td >
+    <a href="{{ path('App_locationvoiture') }}" class="btn-link" >Accueil</a>
+</td>
+</tr>
+
+
+    
+{% endblock %}

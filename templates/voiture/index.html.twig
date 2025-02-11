@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Voitures{% endblock %}
+
+{% block body %}
+    <h1>Liste des Voitures</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Immatriculation</th>
+                <th>Modèle</th>
+                <th>Prix Abidjan</th>
+                <th>Prix Hors Abidjan</th>
+                <th>Marque</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for voiture in voitures %}
+            <tr>
+                <td>{{ voiture.immatriculation }}</td>
+                <td>{{ voiture.modele }}</td>
+                <td>{{ voiture.prixAbidjan }}</td> <!-- Afficher le prix pour Abidjan -->
+                <td>{{ voiture.prixHorsAbidjan }}</td> <!-- Afficher le prix pour hors Abidjan -->
+                <td>{{ voiture.marque.libelleMarque }}</td>
+                <td>
+                    <a href="{{ path('app_voiture_show', {'immatriculation': voiture.immatriculation}) }}">Voir</a>
+                    <a href="{{ path('app_voiture_edit', {'immatriculation': voiture.immatriculation}) }}">Éditer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_voiture_new') }}" class="btn-link">Créer une nouvelle voiture</a>
+    <a href="{{ path('App_locationvoiture') }}" class="btn-link">Accueil</a> 
+
+{% endblock %}

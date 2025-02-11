@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des locations{% endblock %}
+
+{% block body %}
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid black;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    /* Ajustement de la largeur des colonnes */
+    th, td {
+        width: 8%; /* Ajustez cette valeur si nécessaire */
+    }
+
+   
+</style>
+<h1>Liste des locations</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Code de Location</th>
+            <th>Date de début</th>
+            <th>Date de fin</th>
+            <th>Immatriculation</th>
+            <th>Marque</th>
+            <th>Modèle</th>
+            <th>Prix Total (CFA)</th>
+            <th>Destination</th>
+            <th>Client</th>
+            <th>Chauffeur</th>
+            <th>Datede retour</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    {% for location in locations %}
+        <tr>
+            <td>{{ location.codeLocation }}</td>
+            <td>{{ location.dateDebutLocation ? location.dateDebutLocation|date('d/m/Y') : '' }}</td>
+            <td>{{ location.dateFinLocation ? location.dateFinLocation|date('d/m/Y') : '' }}</td>
+            <td>{{ location.voiture ? location.voiture.immatriculation : '' }}</td>
+            <td>{{ location.voiture ? location.voiture.marque.libelleMarque : '' }}</td>
+            <td>{{ location.voiture ? location.voiture.modele : '' }}</td>
+            <td>{{ location.prixLocation }} F CFA</td>
+            <td>{{ location.destination}}</td>
+            <td>{{ location.client ? location.client.nomClient ~ ' ' ~ location.client.prenomClient : '' }}</td>
+            <td>{{ location.chauffeur ? location.chauffeur.nomChauffeur ~ ' ' ~ location.chauffeur.prenomChauffeur : 'Aucun' }}</td>
+            <td>{{ location.rendu ? location.rendu|date('d/m/Y H:i') : 'Non retourné' }}</td> <!-- Afficher la date de retour -->
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="9">Aucune location trouvée.</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

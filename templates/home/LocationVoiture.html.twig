@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<html>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_client_index') }}">Gestion de Clients</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_chauffeur_index') }}">Gestion de Chauffeurs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_location_index') }}">Gestion de Locations</a>
+            </li>
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_voiture_index') }}">Gestion de Voitures</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_marque_index') }}">Gestion de Marques</a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_user_index') }}">Gestion des utilisateurs</a>
+                </li>
+            {% endif %} 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+            </li>
+                
+        </ul>
+        
+    </div>
+  </div>
+</nav>
+ <br><br><br><br><br><br>
+ 
+   <h1>Bienvenue sur la Page de Gestion de Location de Voitures</h1>
+   <p>Utilisez les options ci-dessus pour naviguer à travers les différentes sections de gestion.</p>
+   
+</html>
+{% endblock %}

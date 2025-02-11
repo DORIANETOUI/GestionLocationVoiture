@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 >Date de retour de la voiture</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.rendu) }} <!-- Champ pour la date de rendu -->
+        <button type="submit">Enregistrer</button>
+    {{ form_end(form) }}
+{% endblock %}

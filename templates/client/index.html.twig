@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des clients{% endblock %}
+
+{% block body %}
+    <h1>Liste des clients</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Code </th>
+                <th>Nom </th>
+                <th>Prenom </th>
+                <th>Adresse</th>
+                <th>Contact</th>
+                <th>Email</th> {# Ajout de la colonne Email #}
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+            <tr>
+                <td>{{ client.codeClient }}</td>
+                <td>{{ client.nomClient }}</td>
+                <td>{{ client.prenomClient }}</td>
+                <td>{{ client.adresse }}</td>
+                <td>{{ client.contact }}</td>
+                <td>{{ client.email }}</td> {# Affichage du champ email #}
+                <td>
+                    <a href="{{ path('app_client_show', {'codeClient': client.codeClient}) }}">Voir</a>
+                    <a href="{{ path('app_client_edit', {'codeClient': client.codeClient}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucun enregistrement trouvé</td> {# Ajustement du colspan pour inclure la colonne email #}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_client_new') }}" class="btn-link" >Ajouter un nouveau client</a>
+    <a href="{{ path('App_locationvoiture') }}" class="btn-link" >Accueil</a>
+{% endblock %}

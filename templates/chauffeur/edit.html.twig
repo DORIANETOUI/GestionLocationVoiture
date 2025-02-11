@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Chauffeur{% endblock %}
+
+{% block body %}
+    <h1>Modifier Chauffeur</h1>
+
+    {{ include('chauffeur/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('app_chauffeur_index') }}" class="btn-link">Retour à la liste</a>
+
+    {{ include('chauffeur/_delete_form.html.twig') }}
+{% endblock %}  

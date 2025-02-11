@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de la location{% endblock %}
+
+{% block body %}
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<h1>Détails de la location</h1>
+
+<table class="table">
+    <tr>
+        <th>Code</th>
+        <td>{{ location.codeLocation }}</td>
+    </tr>
+    <tr>
+        <th>Immatriculation</th>
+        <td>{{ location.voiture ? location.voiture.immatriculation : 'N/A' }}</td>
+    </tr>
+    <tr>
+        <th>Marque</th>
+        <td>{{ location.voiture ? location.voiture.marque.libelleMarque : 'N/A' }}</td>
+    </tr>
+    <tr>
+        <th>Modèle</th>
+        <td>{{ location.voiture ? location.voiture.modele : 'N/A' }}</td>
+    </tr>
+    <tr>
+        <th>Nom du client</th>
+        <td>{{ location.client ? location.client.nomClient : 'N/A' }}</td>
+    </tr>
+    <tr>
+        <th>Nom du chauffeur</th>
+        <td>{{ location.chauffeur ? location.chauffeur.nomChauffeur ~ ' ' ~ location.chauffeur.prenomChauffeur : 'N/A' }}</td>
+    </tr>
+    <tr>
+        <th>Date de début</th>
+        <td>{{ location.dateDebutLocation ? location.dateDebutLocation|date('d/m/Y') : 'N/A' }}</td>
+    </tr>
+    <tr>
+        <th>Date de fin</th>
+        <td>{{ location.dateFinLocation ? location.dateFinLocation|date('d/m/Y') : 'N/A' }}</td>
+    </tr>
+    <tr>
+        <th>Prix Abidjan (CFA)</th>
+        <td>{{ location.voiture ? location.voiture.prixAbidjan ~ ' F CFA' : 'N/A' }}</td>
+    </tr>
+    <tr>
+        <th>Prix Hors Abidjan (CFA)</th>
+        <td>{{ location.voiture ? location.voiture.prixHorsAbidjan ~ ' F CFA' : 'N/A' }}</td>
+    </tr>
+    <tr>
+        <th>Prix Total (CFA)</th>
+        <td>{{ location.prixLocation }} F CFA</td>
+    </tr>
+    <tr>
+        <th>Destination</th>
+        <td>{{ location.destination}}</td>
+    </tr>
+    <tr>
+        <th>Date de retour</th>
+        <td>
+            {{ location.rendu ? location.rendu|date('d/m/Y H:i') : 'Non retourné' }}
+        </td>  
+    </tr>
+</table>
+
+{% endblock %}

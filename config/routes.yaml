@@ -1,0 +1,20 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+home:
+    path: / 
+    controller: App\Controller\HomeController::index
+
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+app_logout:
+    path: /logout
+    controller: App\Controller\SecurityController::logout
+
+admin_utilisateur_new:
+    path: /admin/utilisateur/new
+    controller: App\Controller\UtilisateurController::new
+

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <h1>Bienvenue sur notre application de gestion de location de voitures</h1>
+
+    <p>
+       Veuillez vous <a href="{{ path('app_login') }}">connecter</a> s'il vous plaît.
+    </p>
+{% endblock %}
