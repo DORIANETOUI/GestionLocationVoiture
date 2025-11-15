@@ -63,3 +63,17 @@ Twig
 Doctrine ORM
 MySQL (ou autre SGBD selon config)
 Dompdf (ou autre bibliothèque PDF)
+
+-Accès Administrateur
+
+Le projet est conçu de manière sécurisée : seul l’administrateur peut créer de nouveaux utilisateurs.
+Les autres utilisateurs ne peuvent pas modifier la gestion des comptes.
+
+Identifiants par défaut :
+
+Nom d’utilisateur : Admin
+Mot de passe : Doriane
+Ces identifiants permettent d’accéder à l’interface d’administration complète, incluant la gestion des utilisateurs.
+
+Licence
+Libre d'utilisation et d’amélioration.
